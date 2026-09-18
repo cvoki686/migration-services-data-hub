@@ -26,7 +26,7 @@ function render(){
 }
 function resetAll(){ $("q").value="";$("theme").value="";$("publisher").value="";$("sort").value="title";document.querySelectorAll(".theme-tile").forEach(x=>x.classList.remove("active"));render()}
 async function load(){
-  const r=await fetch("./data/catalogue.json",{cache:"no-store"}),j=await r.json();data=j.items||[];
+  const r=await fetch("./catalogue.json",{cache:"no-store"}),j=await r.json();data=j.items||[];
   addOptions("theme",data.map(x=>x.theme));addOptions("publisher",data.map(x=>x.publisher));buildThemes();
   $("status").textContent="Public catalogue published from the Migration Data Repository.";render();
 }
