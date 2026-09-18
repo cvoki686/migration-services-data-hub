@@ -1,4 +1,4 @@
-name: Refresh catalogue and publish GitHub Pages
+name: Publish Migration Services Data Hub
 
 on:
   push:
@@ -6,9 +6,6 @@ on:
       - main
 
   workflow_dispatch:
-
-  schedule:
-    - cron: "17 * * * *"
 
 permissions:
   contents: read
@@ -26,22 +23,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Install workbook reader
-        run: npm install
-
-      - name: Refresh public catalogue from SharePoint
-        env:
-          MS_TENANT_ID: ${{ secrets.MS_TENANT_ID }}
-          MS_CLIENT_ID: ${{ secrets.MS_CLIENT_ID }}
-          MS_CLIENT_SECRET: ${{ secrets.MS_CLIENT_SECRET }}
-          WORKBOOK_SHARE_URL: ${{ secrets.WORKBOOK_SHARE_URL }}
-        run: node scripts/update-catalogue.mjs
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
