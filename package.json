@@ -1,0 +1,9 @@
+{
+  "name": "migration-services-data-hub-github-pages",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  }
+}

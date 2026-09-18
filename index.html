@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Migration Services Data Hub | Coventry City Council</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<a class="skip" href="#catalogue">Skip to catalogue</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#home" aria-label="Migration Services Data Hub home">
+      <img src="./assets/coventry-logo-header.jpg" alt="Coventry City Council">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="service-name">Migration Services<br><strong>Data Hub</strong></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#themes">Themes</a>
+      <a href="#catalogue">Data catalogue</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">PERFORMANCE &amp; INSIGHTS</p>
+      <h1>Migration Services Data Hub</h1>
+      <p class="lead">Search trusted migration-related datasets and intelligence resources.</p>
+
+      <div class="search-panel" role="search">
+        <label for="q">What data are you looking for?</label>
+        <div class="search-row">
+          <input id="q" type="search" placeholder="Try “asylum”, “population”, “employment” or “Census”" autocomplete="off">
+          <button id="searchBtn" type="button">Search</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="themes-section" id="themes" aria-labelledby="themes-title">
+    <div class="wrap">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">EXPLORE THE CATALOGUE</p>
+          <h2 id="themes-title">Browse by theme</h2>
+          <p>Select a theme to quickly narrow the catalogue.</p>
+        </div>
+        <button class="text-button" id="allThemes" type="button">View all datasets →</button>
+      </div>
+      <div id="themeTiles" class="theme-tiles"></div>
+    </div>
+  </section>
+
+  <section class="catalogue-section" id="catalogue" aria-labelledby="catalogue-title">
+    <div class="wrap">
+      <div class="catalogue-title-row">
+        <div>
+          <p class="section-kicker">DATA CATALOGUE</p>
+          <h2 id="catalogue-title">Migration intelligence resources</h2>
+        </div>
+        <strong id="count" class="result-count">0 datasets</strong>
+      </div>
+
+      <div class="filterbar">
+        <div class="filter-field">
+          <label for="theme">Theme</label>
+          <select id="theme"><option value="">All themes</option></select>
+        </div>
+        <div class="filter-field">
+          <label for="publisher">Publisher</label>
+          <select id="publisher"><option value="">All publishers</option></select>
+        </div>
+        <div class="filter-field sort-field">
+          <label for="sort">Sort by</label>
+          <select id="sort">
+            <option value="title">Title A–Z</option>
+            <option value="theme">Theme A–Z</option>
+            <option value="publisher">Publisher A–Z</option>
+          </select>
+        </div>
+        <button id="reset" class="reset" type="button">Clear filters</button>
+      </div>
+
+      <p id="status" class="status" aria-live="polite"></p>
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty" hidden>
+        <h3>No matching datasets</h3>
+        <p>Try a different search term or clear your filters.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about-inner">
+      <div>
+        <p class="section-kicker">ABOUT THIS HUB</p>
+        <h2>One place for migration intelligence</h2>
+      </div>
+      <p>This internal catalogue brings together migration-related datasets and intelligence resources used to support analysis, reporting and informed decision-making across Coventry.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Coventry City Council</span>
+    <span>Performance &amp; Insights</span>
+  </div>
+</footer>
+<script src="./app.js"></script>
+</body>
+</html>

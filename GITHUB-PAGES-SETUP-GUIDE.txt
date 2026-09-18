@@ -1,0 +1,65 @@
+GITHUB PAGES — STEP-BY-STEP SETUP
+
+1. GET APPROVAL FIRST
+This package is designed for PUBLIC internet publication. Confirm that Coventry City Council permits the catalogue fields and links to be published and that your company GitHub organisation permits GitHub Pages.
+
+2. CREATE THE REPOSITORY
+- Sign in to your company's GitHub.
+- Create a new repository, for example: migration-services-data-hub.
+- Use the Coventry/company organisation as Owner.
+- Follow your organisation's required visibility policy.
+- Upload the CONTENTS of this folder to the repository root.
+- Make sure `.github/workflows/pages.yml` is included.
+
+3. MICROSOFT ACCESS
+Ask ICT for a Coventry-approved Entra application that can read the source workbook with least privilege.
+You need:
+MS_TENANT_ID
+MS_CLIENT_ID
+MS_CLIENT_SECRET
+
+4. ADD GITHUB SECRETS
+Repository -> Settings -> Secrets and variables -> Actions -> New repository secret.
+Add:
+MS_TENANT_ID
+MS_CLIENT_ID
+MS_CLIENT_SECRET
+WORKBOOK_SHARE_URL
+
+WORKBOOK_SHARE_URL value:
+https://coventrycc-my.sharepoint.com/:x:/r/personal/cvhum644_coventry_gov_uk/_layouts/15/Doc.aspx?sourcedoc=%7B3974171D-697B-4C24-BC2A-71EE10FB1031%7D&file=Migration%20Data%20Repo%20-%20Copy.xlsx&action=default&mobileredirect=true
+
+Never put MS_CLIENT_SECRET in app.js, README, HTML, catalogue.json or a normal GitHub variable.
+
+5. ENABLE GITHUB PAGES
+Repository -> Settings -> Pages.
+Under Build and deployment, set Source = GitHub Actions.
+
+6. FIRST PUBLICATION
+Open Actions -> Refresh catalogue and publish GitHub Pages -> Run workflow.
+Wait for build and deploy to complete.
+Then Settings -> Pages -> Visit site.
+
+7. HOW REFRESHING WORKS
+The workflow runs approximately once per hour. Each run:
+- authenticates to Microsoft Graph using GitHub Secrets;
+- downloads the latest XLSX;
+- extracts catalogue rows and embedded hyperlinks;
+- writes data/catalogue.json;
+- publishes the static site to GitHub Pages.
+
+You can also run it manually at any time from Actions -> Run workflow.
+
+8. TEST
+Change one SAFE/PUBLIC value in Excel and save it.
+Run the workflow manually.
+Refresh the GitHub Pages website.
+Confirm the change appears.
+
+9. IMPORTANT
+GitHub Pages is static hosting. It cannot safely query your private SharePoint workbook directly from browser JavaScript because doing so would require authentication. The GitHub Actions workflow is the secure bridge.
+
+The current workbook URL is under coventrycc-my.sharepoint.com. For production, move the source workbook to a team-owned SharePoint library and replace the WORKBOOK_SHARE_URL GitHub secret.
+
+PUBLICATION CHECK
+Before launch, inspect the generated data/catalogue.json and confirm every field and URL is suitable for public release.
